@@ -5,6 +5,7 @@ dev:
 
 # for the shell command we use @
 # to execute the command we use (make dev or prod) to execute the above or below command
+
 prod:
     @rm -rf .terraform
     @terraform init -backend-config=env-prod/state.tfvars
