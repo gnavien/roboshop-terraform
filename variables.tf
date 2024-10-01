@@ -1,3 +1,3 @@
 variable "env" {}
-variable "vpc" {}
+variable "vpc" {} # we have mentioned in main.tfvars
 variable "tags" {}
