@@ -1,27 +1,5 @@
 env = "dev"
 
-#components = {
-#  frontend = {}
-#  mongodb = {}
-#  catalogue = {}
-#  redis = {}
-#  user = {}
-#  cart = {}
-#  mysql = {}
-#  shipping = {}
-#  payment = {}
-#  rabbitmq = {}
-#
-#}
-
-#env = "dev"
-#
-#components = {
-#  frontend  = {}
-#  mongodb   = {}
-#  catalogue = {}
-#}
-
 tags = {
   company_name  = "XYZ Tech"
   business      = "ecommerce"
@@ -30,7 +8,7 @@ tags = {
   project_name  = "roboshop"
 }
 
-vpc = {
+vpc_id = {
   main = {
     cidr_block = "10.0.0.0/16"
     subnets = {
@@ -42,11 +20,3 @@ vpc = {
   }
 }
 
-#default_vpc_id = "vpc-01279ffdeb1280247"
-# Since we have many subnets we will use the map to get the sub IP
-#vpc = {
-#  main = {
-#    cidr_block = "10.0.0.0/16"
-#    web_subnet_cidr_block = ["10.0.0.0/24"]
-#  }
-#}
