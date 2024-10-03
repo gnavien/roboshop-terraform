@@ -17,6 +17,6 @@ module "vpc" {
 #  subnet_id =
 #}
 
-output "subnet_ids]" {
+output "subnet_ids" {
   value = "module.vpc"
 }
