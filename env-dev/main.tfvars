@@ -25,4 +25,5 @@ vpc = {
     cidr_block = "10.0.0.0/16"
   }
 }
-#default_vpc_id     = "vpc-0304019ac59200add"
+
+default_vpc_id     = "vpc-0304019ac59200add"
