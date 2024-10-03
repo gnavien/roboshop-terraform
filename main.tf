@@ -1,4 +1,3 @@
-
 module "vpc" {
   source = "git::https://github.com/gnavien/tf-module-vpc.git"
 
