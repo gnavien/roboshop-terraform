@@ -35,12 +35,26 @@
 
 
 
+#module "vpc" {
+#  source     = "git::https://github.com/gnavien/tf-module-vpc.git"
+#  for_each   = var.vpc
+#  cidr_block = each.value["cidr_block"]
+#  subnets    = each.value["subnets"] # this value we will get from main.tfvars
+#
+#  env = var.env
+#  tags = var.tags
+#}
+
 module "vpc" {
-  source     = "git::https://github.com/gnavien/tf-module-vpc.git"
+  source = "git::https://github.com/gnavien/tf-module-vpc.git"
+
   for_each   = var.vpc
   cidr_block = each.value["cidr_block"]
-  subnets    = each.value["subnets"] # this value we will get from main.tfvars
+  subnets    = each.value["subnets"]
 
-  env = var.env
-  tags = var.tags
+  env            = var.env
+  tags           = var.tags
+  default_vpc_id = var.default_vpc_id
+  default_vpc_rt = var.default_vpc_rt
+
 }
