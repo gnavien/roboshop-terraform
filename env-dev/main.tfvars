@@ -21,4 +21,4 @@ vpc = {
 }
 
 
-default_vpc_id     = "vpc-0304019ac59200add"
+#default_vpc_id     = "vpc-0304019ac59200add"
