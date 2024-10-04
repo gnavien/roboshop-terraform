@@ -7,6 +7,7 @@ module "vpc" {
   env            = var.env
   tags           = var.tags
   default_vpc_id = var.default_vpc_id
+  default_rt_table = var.default_rt_table
 }
 
 module "app_server" {

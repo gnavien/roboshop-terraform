@@ -28,3 +28,4 @@ vpc = {
 #}
 
 default_vpc_id     = "vpc-038ac78786571a365"
+default_rt_table   = "rtb-06eaf21a58a2b11b8"
