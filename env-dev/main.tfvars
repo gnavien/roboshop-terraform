@@ -20,6 +20,13 @@ vpc = {
   }
 }
 
+rabbitmq = {
+  main ={
+    instance_type = "t3.small"
+    component = "rabbitmq"
+  }
+
+}
 
 #vpc = {
 #  main = {
