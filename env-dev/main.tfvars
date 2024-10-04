@@ -24,15 +24,13 @@ rabbitmq = {
   main ={
     instance_type = "t3.small"
     component = "rabbitmq"
+
   }
 
 }
 
-#vpc = {
-#  main = {
-#    cidr_block = "10.0.0.0/16"
-#  }
-#}
+#Below is the one we need to check and gather information based on your logging and in this some might keep changing if we dont use a static setup
 
 default_vpc_id     = "vpc-038ac78786571a365"
 default_rt_table   = "rtb-06eaf21a58a2b11b8"
+bastion_node = "172.31.3.1"
