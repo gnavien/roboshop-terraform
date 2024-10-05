@@ -8,7 +8,7 @@ variable "component" {}
 variable "sg_subnet_cidr" {}
 variable "vpc_id" {}
 variable "rabbitmq" {}
-variable "bastion_node" {}
+variable "allow_ssh_cidr" {}
 
 
 

@@ -23,7 +23,7 @@ vpc = {
 rabbitmq = {
   main = {
     instance_type = "t3.small"
-    component = "rabbitmq"
+    component     = "rabbitmq"
 
   }
 
@@ -31,6 +31,6 @@ rabbitmq = {
 
 #Below is the one we need to check and gather information based on your logging and in this some might keep changing if we dont use a static setup
 
-default_vpc_id     = "vpc-04286d7e37de69708"
-default_rt_table   = "rtb-030825f58792d3edf"
-bastion_node = "54.197.211.116"
+default_vpc_id        = "vpc-04286d7e37de69708"
+default_rt_table      = "rtb-030825f58792d3edf"
+allow_ssh_cidr        = ["54.197.211.116/32"]
