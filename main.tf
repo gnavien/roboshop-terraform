@@ -37,6 +37,7 @@ module "rabbitmq" {
 
   env = var.env
   tags = var.tags
+  bastion_node = var.bastion_node
 
 }
 
