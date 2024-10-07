@@ -24,10 +24,18 @@ rabbitmq = {
   main = {
     instance_type = "t3.small"
     component     = "rabbitmq"
-
-
   }
+}
 
+rds = {
+  main = {
+    component      = "rds"
+    engine         = "aurora-mysql"
+    engine_version = "5.7.mysql_aurora.2.11.3"
+    db_name        = "dummy"
+    instance_count = 1
+    instance_class = "db.t3.small"
+  }
 }
 
 #Below is the one we need to check and gather information based on your logging and in this some might keep changing if we dont use a static setup
