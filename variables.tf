@@ -8,6 +8,7 @@ variable "default_rt_table" {}
 #variable "vpc_id" {}
 variable "rabbitmq" {}
 variable "allow_ssh_cidr" {}
+variable "zone_id" {}
 
 
 

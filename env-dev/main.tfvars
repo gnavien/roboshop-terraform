@@ -25,6 +25,7 @@ rabbitmq = {
     instance_type = "t3.small"
     component     = "rabbitmq"
 
+
   }
 
 }
@@ -34,3 +35,4 @@ rabbitmq = {
 default_vpc_id        = "vpc-011e6644812470204"
 default_rt_table      = "rtb-0f907e1f29b775e22"
 allow_ssh_cidr        = ["172.31.43.67/32"]
+zone_id               = "Z03832191PDTE0O266XXE"
