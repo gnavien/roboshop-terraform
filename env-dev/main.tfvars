@@ -31,6 +31,6 @@ rabbitmq = {
 
 #Below is the one we need to check and gather information based on your logging and in this some might keep changing if we dont use a static setup
 
-default_vpc_id        = "vpc-04286d7e37de69708"
-default_rt_table      = "rtb-030825f58792d3edf"
-allow_ssh_cidr        = ["54.197.211.116/32"]
+default_vpc_id        = "vpc-011e6644812470204"
+default_rt_table      = "rtb-0f907e1f29b775e22"
+allow_ssh_cidr        = ["172.31.43.67/32"]
