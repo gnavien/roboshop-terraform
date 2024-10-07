@@ -42,6 +42,7 @@ rds = {
 
 default_vpc_id        = "vpc-011e6644812470204"
 default_rt_table      = "rtb-0f907e1f29b775e22"
-allow_ssh_cidr        = ["172.31.43.67/32"]
+allow_ssh_cidr        = ["172.31.43.67/32"] # This is a private IP address
 zone_id               = "Z03832191PDTE0O266XXE"
 #kms_key_id = "jhjkkljkj"
+# kms_key_arn = "kjhskjdksjk"
