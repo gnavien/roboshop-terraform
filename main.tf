@@ -102,6 +102,7 @@ module "elasticache" {
 
   replicas_per_node_group = each.value["replicas_per_node_group"]
   num_node_groups = each.value["num_node_groups"]
+  parameter_group_name = each.value["parameter_group_name"]
 
 
   vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)

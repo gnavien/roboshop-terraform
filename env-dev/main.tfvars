@@ -62,10 +62,11 @@ elasticache = {
   main = {
     component               = "elasticache"
     engine                  = "redis" # check using configure and create cluster in elastic cache
-    engine_version          = "6.2" # check using configure and create cluster in elasticache
+    engine_version          = "6.x" # check using configure and create cluster in elasticache
     num_node_groups         = 1
     replicas_per_node_group = 1
     node_type               = "cache.t3.micro"
+    parameter_group_name    = "default.redis6.x.cluster.on"
   }
 }
 
