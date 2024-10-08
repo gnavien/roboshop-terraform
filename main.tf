@@ -127,7 +127,7 @@ module "alb" {
   vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
   sg_subnet_cidr     = each.value["name"]  == "public" ? ["0.0.0.0/0"  ] : local.app_web_subnet_cidr       # Here we are giving 2 subnets app and web to access each other as the request will be coming from both the directiuons
 
-  subnets        = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value [subnet_ref], null), "subnet_ids", null)
+  subnets        = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value ["subnet_ref"], null), "subnet_ids", null)
 
 
 
