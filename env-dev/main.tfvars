@@ -22,12 +22,12 @@ vpc = {
 
 #Below is the one we need to check and gather information based on your logging and in this some might keep changing if we dont use a static setup
 
-default_vpc_id        = "vpc-05a643cdc38e041b2"
-default_rt_table      = "rtb-09005c2ebbd9e6a51"
-allow_ssh_cidr        = ["172.31.42.159/32"] # This is a private IP address
-zone_id               = "Z03257622KS0ISKNB959N" # This zone ID is from route 53
-kms_key_id = "82e3a11a-1238-4082-98a3-ff7a7ec4c727" # Once key management service is available (KMS)
-kms_key_arn = "arn:aws:kms:us-east-1:590183819111:key/82e3a11a-1238-4082-98a3-ff7a7ec4c727" # Once KMS is created we can get this information
+default_vpc_id        = "vpc-061763d37266eaca6"
+default_rt_table      = "rtb-0e8c654f78dccaa62"
+allow_ssh_cidr        = ["172.31.40.167/32"] # This is a private IP address
+zone_id               = "Z1034774YEMERCD71C9Q" # This zone ID is from route 53
+kms_key_id = "8c334a91-45b5-4dde-b43d-6426eb7434b9" # Once key management service is available (KMS)
+kms_key_arn = "arn:aws:kms:us-east-1:339713020180:key/8c334a91-45b5-4dde-b43d-6426eb7434b9" # Once KMS is created we can get this information
 
 
 rabbitmq = {
