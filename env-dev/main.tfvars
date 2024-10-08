@@ -87,3 +87,10 @@ alb = {
   }
 }
 
+apps = {
+  main = {
+    name      = "main"
+    component = "app"
+  }
+}
+

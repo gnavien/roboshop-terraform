@@ -10,16 +10,7 @@ module "vpc" {
   default_rt_table = var.default_rt_table
 }
 
-#module "app_server" {
-#  source    = "git::https://github.com/gnavien/tf-module-app.git"
-#  env       = var.env
-#  tags      = var.tags
-#  component = "test"
-#  subnet_id = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null ), "app", null), "subnet_ids", null)[0]
-#  vpc_id    = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-#
-#}
-#
+
 #module "rabbitmq" {
 #  source = "git::https://github.com/gnavien/tf-module-rabbitmq.git"
 #  # Below are the input variables
@@ -128,14 +119,39 @@ module "alb" {
   sg_subnet_cidr     = each.value["name"]  == "public" ? ["0.0.0.0/0"  ] : local.app_web_subnet_cidr       # Here we are giving 2 subnets app and web to access each other as the request will be coming from both the directiuons
 
   subnets        = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value ["subnet_ref"], null), "subnet_ids", null)
-
-
-
   env  = var.env
   tags = var.tags
 
 }
 
+module "app_server" {
+  source    = "git::https://github.com/gnavien/tf-module-app.git"
+
+  component = "test"
+  subnet_id = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null ), "app", null), "subnet_ids", null)[0]
+  vpc_id    = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+
+  env       = var.env
+  tags      = var.tags
+
+
+
+#  variable "component" {}
+#  variable "subnet_id" {}
+#  variable "vpc_id" {}
+#  variable "tags" {
+#    default = {}
+#  }
+#
+#  variable "app_port" {}
+#  variable "sg_subnet_cidr" {}
+#  variable "instance_type" {}
+#
+#
+#  variable "desired_capacity" {}
+#  variable "max_size" {}
+#  variable "min_size" {}
+}
 
 
 
