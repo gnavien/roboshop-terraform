@@ -53,7 +53,7 @@ documentdb = {
     component      = "docdb"
     engine         = "docdb"
     engine_version = "4.0.0"
-    db_instance_count = 1
+    instance_count = 1
     instance_class = "db.t3.medium"
   }
 }

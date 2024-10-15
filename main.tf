@@ -60,8 +60,8 @@ module "rds" {
 module "documentdb" {
   source = "git::https://github.com/gnavien/tf-module-documentdb.git"
 
-  for_each       = var.documentdb
-  component      = each.value["component"]
+  for_each  = var.documentdb
+  component = each.value["component"]
 
 
   subnet_ids     = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
@@ -69,14 +69,14 @@ module "documentdb" {
   sg_subnet_cidr = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), "app", null), "cidr_block", null)
 
 
-  db_instance_count = each.value["db_instance_count"]
-  instance_class = each.value["instance_class"]
-  engine = each.value["engine"]
-  engine_version = each.value["engine_version"]
+  instance_count = each.value["instance_count"]
+  instance_class    = each.value["instance_class"]
+  engine            = each.value["engine"]
+  engine_version    = each.value["engine_version"]
 
-  tags           = var.tags
-  env            = var.env
-  kms_key_arn    = var.kms_key_arn  # kms key ARN (amazon resource name)
+  tags        = var.tags
+  env         = var.env
+  kms_key_arn = var.kms_key_arn  # kms key ARN (amazon resource name)
 
 
 }
