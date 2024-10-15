@@ -22,7 +22,7 @@ vpc = {
 
 #Below is the one we need to check and gather information based on your logging and in this some might keep changing if we dont use a static setup
 
-default_vpc_id        = "vpc-06916a5acca5abab9"
+default_vpc_id        = "vpc-01279ffdeb1280247"
 default_rt_table      = "rtb-07573378a435bd508"
 allow_ssh_cidr        = ["172.31.46.40/32"] # This is a private IP address
 zone_id               = "Z00238782DN7KNOSJPFLV" # This zone ID is from route 53
