@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "git::https:github.com/gnavien/tf-module-vpc.git"
+  source = "git::https://github.com/gnavien/tf-module-vpc.git"
 
   for_each         = var.vpc
   cidr_block       = each.value["cidr_block"]
@@ -108,7 +108,7 @@ module "vpc" {
 #}
 
 module "alb" {
-  source             = "git::https:github.com/gnavien/tf-module-alb.git"
+  source             = "git::https://github.com/gnavien/tf-module-alb.git"
   # Below are the input variables
   for_each           = var.alb
   name               = each.value["name"]
