@@ -22,12 +22,12 @@ vpc = {
 
 #Below is the one we need to check and gather information based on your logging and in this some might keep changing if we dont use a static setup
 
-default_vpc_id        = "vpc-061763d37266eaca6"
-default_rt_table      = "rtb-0e8c654f78dccaa62"
-allow_ssh_cidr        = ["172.31.40.167/32"] # This is a private IP address
-zone_id               = "Z1034774YEMERCD71C9Q" # This zone ID is from route 53
-kms_key_id = "8c334a91-45b5-4dde-b43d-6426eb7434b9" # Once key management service is available (KMS)
-kms_key_arn = "arn:aws:kms:us-east-1:339713020180:key/8c334a91-45b5-4dde-b43d-6426eb7434b9" # Once KMS is created we can get this information
+default_vpc_id        = "vpc-0d60ff1072a3078a2"
+default_rt_table      = "rtb-07fa36794b16e1bf8"
+allow_ssh_cidr        = ["172.31.37.30/32"] # This is a private IP address
+zone_id               = "Z07941643DFHGB5V5A5FU" # This zone ID is from route 53
+kms_key_id = "57101957-e758-4e2a-903b-224afd6a85c0" # Once key management service is available (KMS)
+kms_key_arn = "arn:aws:kms:us-east-1:590184029746:key/57101957-e758-4e2a-903b-224afd6a85c0" # Once KMS is created we can get this information
 
 
 rabbitmq = {
@@ -88,9 +88,14 @@ alb = {
 }
 
 apps = {
-  main = {
-    name      = "main"
-    component = "app"
+  cart = {
+    component        = "cart"
+    app_port         = 8080
+    instance_type    = "t3.micro"
+    desired_capacity = 1
+    max_size         = 1
+    min_size         = 1
+    subnet_ref       = "app"
   }
 }
 

@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "git::https://github.com/gnavien/tf-module-vpc.git"
+  source = "git::https:github.com/gnavien/tf-module-vpc.git"
 
   for_each         = var.vpc
   cidr_block       = each.value["cidr_block"]
@@ -12,7 +12,7 @@ module "vpc" {
 
 
 #module "rabbitmq" {
-#  source = "git::https://github.com/gnavien/tf-module-rabbitmq.git"
+#  source = "git::https:github.com/gnavien/tf-module-rabbitmq.git"
 #  # Below are the input variables
 #
 #  for_each      = var.rabbitmq
@@ -37,7 +37,7 @@ module "vpc" {
 #
 #
 #module "rds" {
-#  source = "git::https://github.com/gnavien/tf-module-rds.git"
+#  source = "git::https:github.com/gnavien/tf-module-rds.git"
 #
 #  for_each       = var.rds
 #  component      = each.value["component"]
@@ -58,7 +58,7 @@ module "vpc" {
 #
 ## For Documentdb we are using instance based cluster, we are not creating using elastic cluster
 #module "documentdb" {
-#  source = "git::https://github.com/gnavien/tf-module-documentdb.git"
+#  source = "git::https:github.com/gnavien/tf-module-documentdb.git"
 #
 #  for_each       = var.documentdb
 #  component      = each.value["component"]
@@ -83,7 +83,7 @@ module "vpc" {
 #
 #
 #module "elasticache" {
-#  source = "git::https://github.com/gnavien/tf-module-elasticache.git"
+#  source = "git::https:github.com/gnavien/tf-module-elasticache.git"
 #
 #  for_each       = var.elasticache
 #  component      = each.value["component"]
@@ -108,7 +108,7 @@ module "vpc" {
 #}
 
 module "alb" {
-  source             = "git::https://github.com/gnavien/tf-module-alb.git"
+  source             = "git::https:github.com/gnavien/tf-module-alb.git"
   # Below are the input variables
   for_each           = var.alb
   name               = each.value["name"]
@@ -124,33 +124,33 @@ module "alb" {
 
 }
 
-module "app_server" {
-  source    = "git::https://github.com/gnavien/tf-module-app.git"
+module "apps" {
+  
+    source = "git::https:github.com/gnavien/tf-module-app.git"
+    for_each           = var.apps
+    app_port           = each.value["app_port"]
+    desired_capacity   = each.value["desired_capacity"]
+    instance_type      = each.value["instance_type"]
+    max_size           = each.value["max_size"]
+    min_size           = each.value["min_size"]
+    component          = each.value["component"]
+    sg_subnets_cidr    = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), "app", null), "cidr_block", null)
 
-  component = "test"
-  subnet_id = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null ), "app", null), "subnet_ids", null)[0]
-  vpc_id    = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+    subnets            = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value["subnet_ref"], null), "subnet_ids", null)
+    vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+#    lb_dns_name        = lookup(lookup(module.alb, each.value["lb_ref"], null), "dns_name", null)
+#    listener_arn       = lookup(lookup(module.alb, each.value["lb_ref"], null), "listener_arn", null)
+#    lb_rule_priority   = each.value["lb_rule_priority"]
+#    extra_param_access = try(each.value["extra_param_access"], [])
+  
+    env                   = var.env
+    tags                  = var.tags
+    kms_key_id            = var.kms_key_arn
+#    allow_ssh_cidr        = var.allow_ssh_cidr
+#    kms_arn               = var.kms_key_arn
+#    allow_prometheus_cidr = var.allow_prometheus_cidr
 
-  env       = var.env
-  tags      = var.tags
 
-
-
-#  variable "component" {}
-#  variable "subnet_id" {}
-#  variable "vpc_id" {}
-#  variable "tags" {
-#    default = {}
-#  }
-#
-#  variable "app_port" {}
-#  variable "sg_subnet_cidr" {}
-#  variable "instance_type" {}
-#
-#
-#  variable "desired_capacity" {}
-#  variable "max_size" {}
-#  variable "min_size" {}
 }
 
 
