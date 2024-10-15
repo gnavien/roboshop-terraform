@@ -36,25 +36,25 @@ module "rabbitmq" {
 }
 #
 #
-#module "rds" {
-#  source = "git::https:github.com/gnavien/tf-module-rds.git"
-#
-#  for_each       = var.rds
-#  component      = each.value["component"]
-#  engine         = each.value["engine"]
-#  engine_version = each.value["engine_version"]
-#  db_name        = each.value["db_name"]
-#  subnet_ids     = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
-#  instance_count = each.value["instance_count"]
-#  instance_class = each.value["instance_class"]
-#  vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-#
-#  tags           = var.tags
-#  env            = var.env
-#  kms_key_arn    = var.kms_key_arn  # kms key ARN (amazon resource name)
-#  sg_subnet_cidr = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), "app", null), "cidr_block", null)
-#
-#}
+module "rds" {
+  source = "git::https://github.com/gnavien/tf-module-rds.git"
+
+  for_each       = var.rds
+  component      = each.value["component"]
+  engine         = each.value["engine"]
+  engine_version = each.value["engine_version"]
+  db_name        = each.value["db_name"]
+  subnet_ids     = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), "db", null), "subnet_ids", null)
+  instance_count = each.value["instance_count"]
+  instance_class = each.value["instance_class"]
+  vpc_id         = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+
+  tags           = var.tags
+  env            = var.env
+  kms_key_arn    = var.kms_key_arn  # kms key ARN (amazon resource name)
+  sg_subnet_cidr = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), "app", null), "cidr_block", null)
+
+}
 #
 ## For Documentdb we are using instance based cluster, we are not creating using elastic cluster
 #module "documentdb" {
