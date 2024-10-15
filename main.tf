@@ -58,7 +58,7 @@ module "rds" {
 
 # For Documentdb we are using instance based cluster, we are not creating using elastic cluster
 module "documentdb" {
-  source = "git::https:github.com/gnavien/tf-module-documentdb.git"
+  source = "git::https://github.com/gnavien/tf-module-documentdb.git"
 
   for_each       = var.documentdb
   component      = each.value["component"]
