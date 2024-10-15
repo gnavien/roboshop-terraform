@@ -24,7 +24,7 @@ vpc = {
 
 default_vpc_id        = "vpc-0d60ff1072a3078a2"
 default_rt_table      = "rtb-07fa36794b16e1bf8"
-allow_ssh_cidr        = ["172.31.37.30/32"] # This is a private IP address
+allow_ssh_cidr        = ["172.31.44.60/32"] # This is a private IP address
 zone_id               = "Z07941643DFHGB5V5A5FU" # This zone ID is from route 53
 kms_key_id = "57101957-e758-4e2a-903b-224afd6a85c0" # Once key management service is available (KMS)
 kms_key_arn = "arn:aws:kms:us-east-1:590184029746:key/57101957-e758-4e2a-903b-224afd6a85c0" # Once KMS is created we can get this information

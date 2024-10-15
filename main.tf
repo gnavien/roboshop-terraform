@@ -126,7 +126,8 @@ module "alb" {
 
 module "apps" {
   
-    source = "git::https:github.com/gnavien/tf-module-app.git"
+    source = "git::https://github.com/gnavien/tf-module-app.git"
+
     for_each           = var.apps
     app_port           = each.value["app_port"]
     desired_capacity   = each.value["desired_capacity"]
