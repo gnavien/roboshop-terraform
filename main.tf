@@ -12,7 +12,7 @@ module "vpc" {
 
 
 module "rabbitmq" {
-  source = "git::https:github.com/gnavien/tf-module-rabbitmq.git"
+  source = "git::https://github.com/gnavien/tf-module-rabbitmq.git"
   # Below are the input variables
 
   for_each      = var.rabbitmq
