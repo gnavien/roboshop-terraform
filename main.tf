@@ -117,7 +117,7 @@ module "alb" {
   load_balancer_type = each.value["load_balancer_type"]
 
   vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-  sg_subnet_cidr     = each.value["name"]  == "public" ? ["0.0.0.0/0"  ] : local.app_web_subnet_cidr       # Here we are giving 2 subnets app and web to access each other as the request will be coming from both the directiuons
+  sg_subnet_cidr     = each.value["name"]  == "public" ? ["0.0.0.0/0"  ] : local.app_web_subnet_cidr       # Here we are giving 2 subnets app and web to access each other as the request will be coming from both the directiuons. If it is public it will use 0.0.0.0/0 else it will use the local
 
   subnets        = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value ["subnet_ref"], null), "subnet_ids", null)
   env  = var.env
@@ -136,7 +136,8 @@ module "apps" {
     max_size           = each.value["max_size"]
     min_size           = each.value["min_size"]
     component          = each.value["component"]
-    sg_subnet_cidr    = lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), "app", null), "cidr_block", null)
+    sg_subnet_cidr    = each.value["component"] == "frontend"  ? local.public_web_subnet_cidr : lookup(lookup(lookup(lookup(var.vpc, "main", null), "subnets", null), "app", null), "cidr_block", null)
+  #The above code is to mention that if the component is frontend, we need to add subnet of public.
 
     subnets            = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value["subnet_ref"], null), "subnet_ids", null)
     vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
