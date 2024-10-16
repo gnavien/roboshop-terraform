@@ -22,20 +22,20 @@ vpc = {
 
 #Below is the one we need to check and gather information based on your logging and in this some might keep changing if we dont use a static setup
 
-#default_vpc_id        = "vpc-01279ffdeb1280247"
-#default_rt_table      = "rtb-0af4e95df651397b0"
-#allow_ssh_cidr        = ["172.31.46.40/32"] # This is a private IP address
-#zone_id               = "Z00238782DN7KNOSJPFLV" # This zone ID is from route 53
-#kms_key_id = "815fadb2-9c2d-4375-8f17-797f1813876c" # Once key management service is available (KMS)
-#kms_key_arn = "arn:aws:kms:us-east-1:968585591903:key/815fadb2-9c2d-4375-8f17-797f1813876c" # Once KMS is created we can get this information
-#
-
-default_vpc_id        = "vpc-0f46a9110cb8adf54"
+default_vpc_id        = "vpc-01279ffdeb1280247"
 default_rt_table      = "rtb-0af4e95df651397b0"
-allow_ssh_cidr        = ["172.31.38.122/32"] # This is a private IP address
-zone_id               = "Z07658633JTNQOAIFWUFH" # This zone ID is from route 53
-kms_key_id = "cb39c8a1-86a4-4d5c-8daf-f85da8e27ee4" # Once key management service is available (KMS)
-kms_key_arn = "arn:aws:kms:us-east-1:851725482328:key/cb39c8a1-86a4-4d5c-8daf-f85da8e27ee4" # Once KMS is created we can get this information
+allow_ssh_cidr        = ["172.31.46.40/32"] # This is a private IP address
+zone_id               = "Z00238782DN7KNOSJPFLV" # This zone ID is from route 53
+kms_key_id = "815fadb2-9c2d-4375-8f17-797f1813876c" # Once key management service is available (KMS)
+kms_key_arn = "arn:aws:kms:us-east-1:968585591903:key/815fadb2-9c2d-4375-8f17-797f1813876c" # Once KMS is created we can get this information
+
+
+#default_vpc_id        = "vpc-0f46a9110cb8adf54"
+#default_rt_table      = "rtb-0af4e95df651397b0"
+#allow_ssh_cidr        = ["172.31.38.122/32"] # This is a private IP address
+#zone_id               = "Z07658633JTNQOAIFWUFH" # This zone ID is from route 53
+#kms_key_id = "cb39c8a1-86a4-4d5c-8daf-f85da8e27ee4" # Once key management service is available (KMS)
+#kms_key_arn = "arn:aws:kms:us-east-1:851725482328:key/cb39c8a1-86a4-4d5c-8daf-f85da8e27ee4" # Once KMS is created we can get this information
 
 
 rabbitmq = {
