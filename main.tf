@@ -107,23 +107,23 @@ module "vpc" {
 #  kms_key_arn    = var.kms_key_arn  # kms key ARN (amazon resource name)
 #
 #}
-#
-#module "alb" {
-#  source             = "git::https://github.com/gnavien/tf-module-alb.git"
-#  # Below are the input variables
-#  for_each           = var.alb
-#  name               = each.value["name"]
-#  internal           = each.value["internal"]
-#  load_balancer_type = each.value["load_balancer_type"]
-#
-#  vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
-#  sg_subnet_cidr     = each.value["name"]  == "public" ? ["0.0.0.0/0"  ] : local.app_web_subnet_cidr       # Here we are giving 2 subnets app and web to access each other as the request will be coming from both the directiuons
-#
-#  subnets        = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value ["subnet_ref"], null), "subnet_ids", null)
-#  env  = var.env
-#  tags = var.tags
-#
-#}
+
+module "alb" {
+  source             = "git::https://github.com/gnavien/tf-module-alb.git"
+  # Below are the input variables
+  for_each           = var.alb
+  name               = each.value["name"]
+  internal           = each.value["internal"]
+  load_balancer_type = each.value["load_balancer_type"]
+
+  vpc_id             = lookup(lookup(module.vpc, "main", null), "vpc_id", null)
+  sg_subnet_cidr     = each.value["name"]  == "public" ? ["0.0.0.0/0"  ] : local.app_web_subnet_cidr       # Here we are giving 2 subnets app and web to access each other as the request will be coming from both the directiuons
+
+  subnets        = lookup(lookup(lookup(lookup(module.vpc, "main", null), "subnet_ids", null), each.value ["subnet_ref"], null), "subnet_ids", null)
+  env  = var.env
+  tags = var.tags
+
+}
 #
 #module "apps" {
 #
