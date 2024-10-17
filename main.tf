@@ -126,7 +126,7 @@ module "alb" {
 }
 
 module "apps" {
-
+    depends_on = [module.vpc, module.rabbitmq, module.documentdb, module.elasticache, module.alb, module.rds]
     source = "git::https://github.com/gnavien/tf-module-app.git"
 
     for_each           = var.apps
