@@ -144,14 +144,17 @@ module "apps" {
     lb_dns_name        = lookup(lookup(module.alb, each.value["lb_ref"], null), "dns_name", null)
     listener_arn       = lookup(lookup(module.alb, each.value["lb_ref"], null), "listener_arn", null)
     lb_rule_priority   = each.value["lb_rule_priority"]
-#    extra_param_access = try(each.value["extra_param_access"], [])
+    extra_param_access = try(each.value["extra_param_access"], [])
+  # Only catalogue and user will get extra permission in the iam ec2 role to access docdb
+  #lookup will check for the value and i know it will be available, in the case try i am not sure the value will be there and in those scenario i will be giving a null value []
 
     env                   = var.env
     tags                  = var.tags
     kms_key_id            = var.kms_key_arn
     allow_ssh_cidr        = var.allow_ssh_cidr
-#    kms_arn               = var.kms_key_arn
+    kms_arn               = var.kms_key_arn
 #    allow_prometheus_cidr = var.allow_prometheus_cidr
+
 
 
 }
