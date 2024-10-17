@@ -1,3 +1,3 @@
-bucket = "navien-1"
+bucket = "navien"
 key    = "prod/terraform.tfstate"
 region = "us-east-1"
