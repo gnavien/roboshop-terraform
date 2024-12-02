@@ -22,9 +22,9 @@ vpc = {
 
 #Below is the one we need to check and gather information based on your logging and in this some might keep changing if we dont use a static setup
 
-default_vpc_id        = "vpc-01279ffdeb1280247"
-default_rt_table      = "rtb-07573378a435bd508"
-allow_ssh_cidr        = ["172.31.41.69/32"] # This is a private IP address
+default_vpc_id        = "vpc-05a4656142270b560"
+default_rt_table      = "rtb-0c2f613c56969b866"
+allow_ssh_cidr        = ["172.31.55.206/32"] # This is a private IP address
 #allow_prometheus_cidr = ["172.31.41.70/32"]
 zone_id               = "Z00818251RNVL2ER8SNTY" # This zone ID is from route 53
 kms_key_id = "7e148e08-def8-41a5-9b80-2941c17365b2" # Once key management service is available (KMS)
